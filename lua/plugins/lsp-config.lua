@@ -8,7 +8,7 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		lazy = false,
-		ensure_installed = { "lua_ls", "tsserver", "html" },
+		ensure_installed = { "lua_ls", "tsserver", "html", "clangd" },
 		opts = {
 			auto_install = true,
 		},
@@ -29,6 +29,10 @@ return {
 			lspconfig.html.setup({
 				capabilities = capabilities,
 			})
+      lspconfig.clangd.setup({
+        capabilities = capabilities,
+      })
+      
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
