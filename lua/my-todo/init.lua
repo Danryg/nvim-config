@@ -17,6 +17,8 @@ function M.add()
     height = height,
     row = row,
     col = col,
+    border = "single",
+    title = "Add TODO",
     style = "minimal",
   })
 
@@ -50,6 +52,10 @@ local function createTodoWindow(todos)
   local lines = vim.api.nvim_get_option("lines")
   local columns = vim.api.nvim_get_option("columns")
 
+  local buf = vim.api.nvim_create_buf(false, true) -- creates a new buffer that is not listed and not loaded
+  vim.api.nvim_buf_set_name(buf, "MyMenu")
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, todos)
+
   -- Calculate todo window size
   local width = 40
   local height = #todos + 2 -- Add padding for borders
@@ -59,27 +65,37 @@ local function createTodoWindow(todos)
   local col = math.floor((columns - width) / 2)
 
   -- Create a new split window
-  local win_id = vim.api.nvim_open_win(0, true, {
-    relative = "win",
+  local win_id = vim.api.nvim_open_win(buf, true, {
+    relative = "editor",
     width = width,
-    height = height,
+    height = #todos,
     row = row,
     col = col,
+    border = "rounded",
     style = "minimal",
   })
 
   -- Set buffer in the new window
-  vim.api.nvim_win_set_buf(win_id, vim.api.nvim_create_buf(false, true))
 
+  for i, option in ipairs(todos) do
+    vim.api.nvim_buf_set_keymap(buf, "n", tostring(i), "", {
+      noremap = true,
+      silent = true,
+      callback = function()
+        print("Selected: " .. option)
+        vim.api.nvim_win_close(win, false)
+      end,
+    })
+  end
   -- Populate buffer with todos
-  vim.api.nvim_buf_set_lines(vim.api.nvim_win_get_buf(win_id), 0, -1, true, todos)
 end
 
 function M.list()
-  local tempTodo = ""
+  local tempTodo = {}
   for i, todo in ipairs(todos) do
-   tempTodo = tempTodo ..  todo .. ","
+    tempTodo[i] = "(" .. i .. ") " .. todo
   end
+  print(tempTodo)
   createTodoWindow(tempTodo)
 end
 
