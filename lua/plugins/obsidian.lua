@@ -104,5 +104,6 @@ return {
     vim.keymap.set("n", "<space>ow", ":ObsidianWorkspace<CR>")
     vim.keymap.set("n", "<space>op", ":ObsidianQuickSwitch<CR>") 
     vim.keymap.set("n", "<space>of", ":ObsidianSearch<CR>")
+    vim.keymap.set("n", "cspace>on", ":ObsidianNew<CR>")
   end,
 }
