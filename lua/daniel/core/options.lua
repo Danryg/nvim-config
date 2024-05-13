@@ -1,9 +1,10 @@
-vim.cmd("set clipboard^=unnamed,unnamedplus")
-vim.cmd("set conceallevel=1")
-vim.cmd("set mouse=")
-
 
 local opt = vim.opt
+
+
+
+-- General
+opt.mouse = ""
 
 -- Tab and Indentation
 opt.expandtab = true

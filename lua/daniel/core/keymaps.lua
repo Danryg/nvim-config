@@ -1,21 +1,43 @@
+vim.g.mapleader = " "
 
--- Disable arrow keys
+local keymap = vim.keymap
+
+keymap.set("i", "jk", "<Esc>", { desc ="Exit insert mode with jk" })
+keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+
+-- increment and decrement numbers
+keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number under cursor" })
+keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number under cursor" })
+
+-- window managment
+keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
+keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
+keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
+keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
+
+-- tab managment
+keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "New tab" })
+keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close tab" })
+keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Next tab" })
+keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Previous tab" })
+keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
+
+
 
 -- Disable arrow keys in normal mode
-vim.keymap.set("n", "<Down>", "", {})
-vim.keymap.set("n", "<Up>", "", {})
-vim.keymap.set("n", "<Right>", "", {})
-vim.keymap.set("n", "<Left>", "", {})
+keymap.set("n", "<Down>", "", {})
+keymap.set("n", "<Up>", "", {})
+keymap.set("n", "<Right>", "", {})
+keymap.set("n", "<Left>", "", {})
 
 -- Disable arrow keys in visual mode
-vim.keymap.set("v", "<Down>", "", {})
-vim.keymap.set("v", "<Up>", "", {})
-vim.keymap.set("v", "<Right>", "", {})
-vim.keymap.set("v", "<Left>", "", {})
+keymap.set("v", "<Down>", "", {})
+keymap.set("v", "<Up>", "", {})
+keymap.set("v", "<Right>", "", {})
+keymap.set("v", "<Left>", "", {})
 
 -- Disable arrow keys in insert mode
-vim.keymap.set("i", "<Down>", "", {})
-vim.keymap.set("i", "<Up>", "", {})
-vim.keymap.set("i", "<Right>", "", {})
-vim.keymap.set("i", "<Left>", "", {})
-
+keymap.set("i", "<Down>", "", {})
+keymap.set("i", "<Up>", "", {})
+keymap.set("i", "<Right>", "", {})
+keymap.set("i", "<Left>", "", {})
