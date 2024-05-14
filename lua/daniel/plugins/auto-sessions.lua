@@ -6,8 +6,14 @@ return {
 		auto_session.setup({
 			auto_restore_enabled = false,
 			auto_session_suppress_dirs = { "~/", "~/Dev/", "~/Downloads", "~/Documents", "~/Desktop/" },
+			pre_save_cmds = {
+				"Neotree close",
+			},
+			post_restore_cmds = {
+				"Neotree show",
+			},
 		})
-
+		-- This is a test
 		local keymap = vim.keymap
 
 		keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" }) -- restore last workspace session for current directory
