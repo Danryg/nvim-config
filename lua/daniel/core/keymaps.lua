@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap
 
-keymap.set("i", "jk", "<Esc>", { desc ="Exit insert mode with jk" })
+keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode with jk" })
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- increment and decrement numbers
@@ -22,8 +22,6 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 
-
-
 -- Disable arrow keys in normal mode
 keymap.set("n", "<Down>", "", {})
 keymap.set("n", "<Up>", "", {})
@@ -41,3 +39,11 @@ keymap.set("i", "<Down>", "", {})
 keymap.set("i", "<Up>", "", {})
 keymap.set("i", "<Right>", "", {})
 keymap.set("i", "<Left>", "", {})
+
+-- Terminal close
+keymap.set("t", "jk", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+keymap.set("n", "<leader>co", "<C-w>v <cmd>:terminal<CR> 50<C-w>|", { desc = "Open terminal" })
+
+keymap.set("n", "<S-Tab>", "<cmd>tabn<CR>", { desc = "Next tab" })
+
+-- Building and running

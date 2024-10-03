@@ -27,19 +27,19 @@ return {
 
 				-- set keybinds
 				opts.desc = "Show LSP references"
-				keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+				keymap.set("n", "<leader>gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
 				opts.desc = "Go to declaration"
-				keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+				keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, opts) -- go to declaration
 
 				opts.desc = "Show LSP definitions"
-				keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+				keymap.set("n", "<leader>gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
 
 				opts.desc = "Show LSP implementations"
-				keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+				keymap.set("n", "<leader>gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
 
 				opts.desc = "Show LSP type definitions"
-				keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+				keymap.set("n", "<leader>gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
 
 				opts.desc = "See available code actions"
 				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
@@ -83,6 +83,26 @@ return {
 			function(server_name)
 				lspconfig[server_name].setup({
 					capabilities = capabilities,
+				})
+			end,
+			["clangd"] = function()
+				-- configure clangd server
+				lspconfig["clangd"].setup({
+					capabilities = capabilities,
+					cmd = {
+						"clangd",
+						"--background-index",
+						"--clang-tidy",
+					},
+					root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", ".hg"),
+					settings = {
+						clangd = {
+							includePaths = {
+								"C:/Users/Danie/Documents/Github/projekt/raylib_games/test/include/",
+								"C:/Users/Danie/gcc/include",
+							},
+						},
+					},
 				})
 			end,
 			["svelte"] = function()
@@ -138,6 +158,23 @@ return {
 							},
 						},
 					},
+				})
+			end,
+			["arduino_language_server"] = function()
+				-- configure svelte server
+				lspconfig["arduino_language_server"].setup({
+					cmd = {
+						"arduino-language-server",
+						"-cli-config",
+						"C:/Users/Danie/AppData/Local/Arduino15/arduino-cli.yaml",
+						"-cli",
+						"C:/ProgramData/chocolatey/bin/arduino-cli.exe",
+						"-clangd",
+						"clangd",
+						"-fqbn",
+						"arduino:avr:micro",
+					},
+					capabilities = capabilities,
 				})
 			end,
 		})
