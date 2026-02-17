@@ -1,10 +1,6 @@
-
 local opt = vim.opt
 
-
-
 -- General
-opt.mouse = ""
 
 -- Tab and Indentation
 opt.expandtab = true
@@ -36,7 +32,3 @@ opt.clipboard:append("unnamedplus")
 -- Split windows
 opt.splitright = true
 opt.splitbelow = true
-
-
-
-

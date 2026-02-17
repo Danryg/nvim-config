@@ -22,24 +22,6 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 
--- Disable arrow keys in normal mode
-keymap.set("n", "<Down>", "", {})
-keymap.set("n", "<Up>", "", {})
-keymap.set("n", "<Right>", "", {})
-keymap.set("n", "<Left>", "", {})
-
--- Disable arrow keys in visual mode
-keymap.set("v", "<Down>", "", {})
-keymap.set("v", "<Up>", "", {})
-keymap.set("v", "<Right>", "", {})
-keymap.set("v", "<Left>", "", {})
-
--- Disable arrow keys in insert mode
-keymap.set("i", "<Down>", "", {})
-keymap.set("i", "<Up>", "", {})
-keymap.set("i", "<Right>", "", {})
-keymap.set("i", "<Left>", "", {})
-
 -- Terminal close
 keymap.set("t", "jk", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 keymap.set("n", "<leader>co", "<C-w>v <cmd>:terminal<CR> 50<C-w>|", { desc = "Open terminal" })
