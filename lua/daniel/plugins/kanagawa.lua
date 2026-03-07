@@ -1,16 +1,27 @@
 return {
-	{
-		"sainnhe/sonokai",
-		priority = 1000,
-		config = function()
-			vim.g.sonokai_style = "andromeda"
-			vim.g.sonokai_enable_italic = 1
-			vim.g.sonokai_disable_italic_comment = 1
-			vim.g.sonokai_transparent_background = 1
-			vim.cmd("colorscheme sonokai")
-		end,
-	},
+	"navarasu/onedark.nvim",
+	priority = 1000, -- make sure to load this before all the other start plugins
+	config = function()
+		require("onedark").setup({
+			style = "warmer",
+		})
+		require("onedark").load()
+	end,
 }
+--
+-- return {
+-- 	{
+-- 		"sainnhe/sonokai",
+-- 		priority = 1000,
+-- 		config = function()
+-- 			vim.g.sonokai_style = "andromeda"
+-- 			vim.g.sonokai_enable_italic = 1
+-- 			vim.g.sonokai_disable_italic_comment = 1
+-- 			vim.g.sonokai_transparent_background = 1
+-- 			vim.cmd("colorscheme sonokai")
+-- 		end,
+-- 	},
+-- }
 
 -- ---@diagnostic disable: assign-type-mismatch
 -- return {
